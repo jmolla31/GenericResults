@@ -7,6 +7,8 @@ namespace GenericResults
     {
         public GenericCreateResult(T result) => this.Result = result;
 
+        public GenericCreateResult(string singleError) => this.Errors = new string[1] { singleError };
+
         public GenericCreateResult(IEnumerable<string> errors) => this.Errors = errors;
 
         public IEnumerable<string> Errors { get; } = Enumerable.Empty<string>();

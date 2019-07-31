@@ -6,6 +6,8 @@ namespace GenericResults
     {
         public GenericDeleteResult() => this.Succeeded = true;
 
+        public GenericDeleteResult(string singleError) => this.Errors = new string[1] { singleError };
+
         public GenericDeleteResult(IEnumerable<string> errors) => this.Errors = errors;
 
         public IEnumerable<string> Errors { get; set; }

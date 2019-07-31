@@ -8,7 +8,7 @@
     <RepositoryUrl>https://github.com/jmolla31/GenericResults</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Description>Generic result classes for basic operations.</Description>
   </PropertyGroup>
 

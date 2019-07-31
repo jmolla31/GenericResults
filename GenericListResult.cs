@@ -7,13 +7,15 @@ namespace GenericResults
 {
     public class GenericListResult<T>
     {
-        public GenericListResult(IReadOnlyCollection<T> result) => this.Result = result;
+        public GenericListResult(IEnumerable<T> result) => this.Result = result;
+
+        public GenericListResult(string singleError) => this.Errors = new string[1] { singleError };
 
         public GenericListResult(IEnumerable<string> errors) => this.Errors = errors;
 
         public IEnumerable<string> Errors { get; } = Enumerable.Empty<string>();
 
-        public IReadOnlyCollection<T> Result { get; }
+        public IEnumerable<T> Result { get; }
 
         public bool Succeeded => !this.Errors.Any();
     }
