@@ -15,4 +15,17 @@ namespace GenericResults
 
         public bool Succeeded { get; }
     }
+
+    public class GenericUpdateResult<TError>
+    {
+        public GenericUpdateResult() => this.Succeeded = true;
+
+        public GenericUpdateResult(TError singleError) => this.Errors = new TError[1] { singleError };
+
+        public GenericUpdateResult(IEnumerable<TError> errors) => this.Errors = errors;
+
+        public IEnumerable<TError> Errors { get; } = Enumerable.Empty<TError>();
+
+        public bool Succeeded { get; }
+    }
 }

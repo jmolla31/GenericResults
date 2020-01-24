@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GenericResults
 {
-    public class GenericListResult<T>
+    public class GenericListResult<T, TError>
     {
         public GenericListResult(IEnumerable<T> result) => this.Result = result;
 

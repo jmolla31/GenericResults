@@ -10,4 +10,11 @@ namespace GenericResults
 
         public IEnumerable<string> Errors { get; set; }
     }
+
+    public class GenericErrorListResult<TError>
+    {
+        public GenericErrorListResult(IEnumerable<TError> errors) => this.Errors = errors;
+
+        public IEnumerable<TError> Errors { get; set; }
+    }
 }

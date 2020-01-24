@@ -15,4 +15,17 @@ namespace GenericResults
 
         public bool Succeeded => !this.Alerts.Any();
     }
+
+    public class GenericBatchResult<TError>
+    {
+        public GenericBatchResult(int hits) => this.Hits = hits;
+
+        public GenericBatchResult(IEnumerable<TError> alerts) => this.Alerts = alerts;
+
+        public IEnumerable<TError> Alerts { get; } = Enumerable.Empty<TError>();
+
+        public int Hits { get; set; }
+
+        public bool Succeeded => !this.Alerts.Any();
+    }
 }
