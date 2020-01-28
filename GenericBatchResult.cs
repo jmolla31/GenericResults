@@ -1,31 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GenericResults
 {
-    public class GenericBatchResult
-    {
-        public GenericBatchResult(int hits) => this.Hits = hits;
-
-        public GenericBatchResult(IEnumerable<string> alerts) => this.Alerts = alerts;
-
-        public IEnumerable<string> Alerts { get; } = Enumerable.Empty<string>();
-
-        public int Hits { get; set; } 
-
-        public bool Succeeded => !this.Alerts.Any();
-    }
-
     public class GenericBatchResult<TError>
     {
+        public GenericBatchResult() => this.Hits = default;
+
         public GenericBatchResult(int hits) => this.Hits = hits;
 
-        public GenericBatchResult(IEnumerable<TError> alerts) => this.Alerts = alerts;
+        public GenericBatchResult(IEnumerable<TError> errors) => this.Errors = errors;
 
-        public IEnumerable<TError> Alerts { get; } = Enumerable.Empty<TError>();
+        public IEnumerable<TError> Errors { get; } = Enumerable.Empty<TError>();
 
         public int Hits { get; set; }
 
-        public bool Succeeded => !this.Alerts.Any();
+        public bool Succeeded => !this.Errors.Any();
+    }
+
+    public class GenericBatchResult<TMessage, TError>
+    {
+        public GenericBatchResult() => this.Hits = default;
+
+        public GenericBatchResult(int hits) => this.Hits = hits;
+
+        public GenericBatchResult(IEnumerable<TMessage> messages) => this.Messages = messages;
+
+        public GenericBatchResult(IEnumerable<TError> errors) => this.Errors = errors;
+
+        public IEnumerable<TMessage> Messages { get; } = Enumerable.Empty<TMessage>();
+
+        public IEnumerable<TError> Errors { get; } = Enumerable.Empty<TError>();
+
+        public int Hits { get; set; }
+
+        public bool Succeeded => !this.Errors.Any();
     }
 }

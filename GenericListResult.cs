@@ -9,11 +9,11 @@ namespace GenericResults
     {
         public GenericListResult(IEnumerable<T> result) => this.Result = result;
 
-        public GenericListResult(string singleError) => this.Errors = new string[1] { singleError };
+        public GenericListResult(TError singleError) => this.Errors = new TError[1] { singleError };
 
-        public GenericListResult(IEnumerable<string> errors) => this.Errors = errors;
+        public GenericListResult(IEnumerable<TError> errors) => this.Errors = errors;
 
-        public IEnumerable<string> Errors { get; } = Enumerable.Empty<string>();
+        public IEnumerable<TError> Errors { get; } = Enumerable.Empty<TError>();
 
         public IEnumerable<T> Result { get; }
 
